@@ -104,5 +104,11 @@ fn fuzz() -> Result<(), String> {
         "9: autolink literals that end in table cell delimiter (GH-20)"
     );
 
+    assert_eq!(
+        to_html("[:]:a\n-\na\n-"),
+        "<h2>-\na</h2>",
+        "10: handle link in heading"
+    );
+
     Ok(())
 }
