@@ -104,5 +104,13 @@ fn fuzz() -> Result<(), String> {
         "9: autolink literals that end in table cell delimiter (GH-20)"
     );
 
+    assert!(
+        matches!(
+            to_mdast("*	~~~\n1.", &Default::default()),
+            Ok(mdast::Node::Root(_))
+        ),
+        "10: should support unordered list with code block, followed by ordered list"
+    );
+
     Ok(())
 }
